@@ -1,0 +1,43 @@
+<div class="container">
+
+  <p id="notice" style="color: green">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </p>
+
+  <h2>User info</h2>
+
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3 style="color: red"><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li style="color: red"><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+  <%= form_for(@user) do |f| %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+    </div>
+
+  <div class="field">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction, autofocus: true %>
+  </div>
+
+
+
+  <%= f.submit "Update User" %>
+  <% end %>
+</div>

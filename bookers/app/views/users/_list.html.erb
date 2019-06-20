@@ -1,0 +1,25 @@
+
+
+	<h2>User info</h2>
+	<% if user.present? %>
+	<%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+		  <table class="table">
+			<tbody>
+				<tr></tr>
+				<tr>
+					<th>name</th>
+					<th><%= user.name %></th>
+				</tr>
+				<tr>
+					<th>introduction</th>
+					<th><%= user.introduction %></th>
+				</tr>
+			</tbody>
+		  </table>
+	<% end %>
+
+		  <% if user.present? %>
+		  <div class="row">
+  				<%= link_to "", edit_user_path(user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+  		  </div>
+		  <% end %>
